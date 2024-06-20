@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --nsw-brand-dark: #002664;
+  --nsw-font-bold: 700;
+  --nsw-line-height-sm-mobile: 1.5;
+  --nsw-font-size-sm-mobile: 1rem;
+  --nsw-border-radius: 0.25rem;
+  --nsw-palette-white: #ffffff;
+  --nsw-white: #ffffff;
+  --nsw-palette-grey-01: #22272b;
+  --nsw-text-dark: #22272b;
+  --nsw-grey-01: #22272b;
+  --nsw-focus: #0085b3;
+  --nsw-palette-focus: #0085b3;
+  --nsw-palette-hover: rgba(0, 133, 179, 0.2);
+  --nsw-palette-off-white: #f2f2f2;
+
+  font-family: "Public Sans", sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 400;
+
+  color: #22272b;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: var(--nsw-font-bold);
+  color: var(--nsw-brand-dark);
+  text-decoration: underline;
+  line-height: var(--nsw-line-height-sm-mobile);
+}
+a:hover {
+  background-color: var(--nsw-palette-hover);
+}
+
+button {
+  font-size: 1em;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  border: solid 2px transparent;
+  white-space: normal;
+  text-decoration: none;
+  padding: 0.625rem 1.375rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  color: #ffffff;
+  background-color: #002664;
+}
+button:hover {
+  border-color: transparent;
+  background-color: rgba(0, 38, 100, 0.85);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  padding: 0.6875rem 1rem;
+  border-radius: var(--nsw-border-radius);
+  background-color: var(--nsw-white);
+  color: var(--nsw-text-dark);
+  border: 1px solid var(--nsw-grey-01);
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 40%;
+}
+
+input[type="date"] {
+  width: 20%;
+}
+
+input[type="email"] {
+  width: 50%;
+}
+
+#form-address {
+  width: 60%;
+}
+
+input[type="button"] {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  padding: 0.6875rem 1rem;
+  border: 1px solid var(--nsw-grey-01);
+  border-right: 0;
+  background-color: silver;
+  border-bottom-left-radius: var(--nsw-border-radius);
+  border-top-left-radius: var(--nsw-border-radius);
+}
+
+input[type="button"]:hover {
+  background-color: silver;
+  border-color: var(--nsw-grey-01);
+}
+
+input[type="tel"] {
+  border-left: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  width: 30%;
+}
+
+input[type="number"] {
+  width: 20%;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 0.7em;
+  font: inherit;
+  width: 1.3em;
+  height: 1.3em;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  transform: translateY(0.25em);
+}
+
+input[type="checkbox"] {
+  transform: translateY(0.28em);
+}
+
+#nsw-checkbox {
+  accent-color: var(--nsw-brand-dark);
+}
+
+::-webkit-datetime-edit {
+  font-family: sans-serif;
+}
+
+input:focus {
+  border-color: var(--nsw-palette-focus);
+}
+
+input:hover {
+  background-color: var(--nsw-palette-hover);
+}

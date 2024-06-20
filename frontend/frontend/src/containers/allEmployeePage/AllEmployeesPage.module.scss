@@ -1,0 +1,24 @@
+.AllEmployees {
+  &_Header {
+    background-color: var(--nsw-palette-off-white);
+    padding: 5% 15%;
+  }
+
+  &_Body {
+    padding: 2% 15%;
+    max-width: 50%;
+
+    &_Subject {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &_List {
+      margin-top: 5%;
+      border-top: solid 1px silver;
+    }
+  }
+}

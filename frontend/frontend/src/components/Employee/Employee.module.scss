@@ -1,0 +1,12 @@
+.Employee {
+  border-bottom: solid 1px silver;
+  padding: 1% 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &_Remove {
+    cursor: pointer;
+  }
+}

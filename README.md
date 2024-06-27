@@ -20,4 +20,4 @@ Create an employee register that allows a user to:
 - User Experience have been considered in the development of the form component. The date inputs have been consolidated into a single date input (less inputs for the user to complete), and the "on-going" checkbox input toggles between displaying or hidding the end-date input (so as to create less confusion for the user on input requirements).
 
 ## Reflection/Learning
-Picked up React-Hook-Form, but couldn't figure out React-Query - will probably have a crack at this again for another project.
+Couldnot use REDUX this time for state management but might use for another project.

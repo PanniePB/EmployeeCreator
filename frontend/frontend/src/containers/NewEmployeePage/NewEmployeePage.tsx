@@ -12,9 +12,9 @@ const NewEmployeePage = () => {
     <>
       <div className={styles.NewEmployee_Header}>
         <Link to="/employees">{`< Back`}</Link>
-        <h1>Register new employee</h1>
+        <h1>Register New Employee</h1>
       </div>
-      <EmployeeForm formParams={formParamsForPOST} />
+      <EmployeeForm formParams={formParamsForPOST} />    //renders the EmployeeForm component and passes the formParamsForPOST object as a prop named formParams.
     </>
   );
 };

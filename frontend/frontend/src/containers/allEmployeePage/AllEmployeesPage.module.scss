@@ -1,7 +1,8 @@
 .AllEmployees {
   &_Header {
-    background-color: var(--nsw-palette-off-white);
+    background-color: var(--p-palette-off-white);
     padding: 5% 15%;
+    justify-content: center;
   }
 
   &_Body {

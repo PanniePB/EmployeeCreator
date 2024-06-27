@@ -1,0 +1,48 @@
+.Form {
+  &_Body {
+    padding: 2% 15%;
+    max-width: 50%;
+  }
+
+  &_Label {
+    font-size: var(--p-font-size-sm-mobile);
+    line-height: var(--p-line-height-sm-mobile);
+    font-weight: var(--p-font-bold);
+    display: block;
+    text-align: left;
+  }
+
+  &_SecButton {
+    color: var(--p-brand-dark);
+    background-color: var(--p-palette-off-white);
+    border: solid 1px var(--p-grey-01);
+  }
+
+  &_SecButton:hover {
+    background-color: rgba(189, 189, 189, 0.85);
+    border-color: var(--p-grey-01);
+  }
+
+  &_Address {
+    width: 60%;
+  }
+
+  &_Validation {
+    display: block;
+    color: rgb(173, 0, 0);
+  }
+
+  &_Break {
+    margin-top: 3%;
+    display: block;
+  }
+
+  &_Breaker {
+    margin-top: 5%;
+    display: block;
+  }
+}
+
+.Break {
+  display: block;
+}

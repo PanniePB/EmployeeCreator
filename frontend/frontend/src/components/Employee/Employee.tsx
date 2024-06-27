@@ -4,7 +4,7 @@ import styles from "../Employee/Employee.module.scss";
 
 export interface IEmployeeProps {
   employeeDetails: {
-         id: number;
+    id: number;
     firstName: string;
     lastName: string;
     empStatus: string;

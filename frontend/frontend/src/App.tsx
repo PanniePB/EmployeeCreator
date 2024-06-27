@@ -1,10 +1,11 @@
 import styles from "./App.module.scss";
-import AllEmployeesPage from "./containers/allEmployeePage/AllEmployeesPage";
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import EditEmployeePage from "./containers/EditEmployeePage/EditEmployeePage";
 import { QueryClient, QueryClientProvider } from "react-query";
+import AllEmployeesPage from "./containers/allEmployeePage/AllEmployeesPage";
 import NewEmployeePage from "./containers/NewEmployeePage/NewEmployeePage";
+import EditEmployeePage from "./containers/EditEmployeePage/EditEmployeePage";
 
 function App() {
   const queryClient = new QueryClient();

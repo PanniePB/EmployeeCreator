@@ -3,45 +3,26 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { createUpdateEmployee, getEmployees } from "../../services/employees";
 import styles from "./EmployeeForm.module.scss";
-import { Employee } from "../../services/interfaces";
-
-
 
 interface Params {
   formParams: {
     crudMethod: string;
     fetchUrl: string;
-    employeeId?: number; // Add employeeId for PUT requests
   };
 }
-
-// id: Number;
-//   firstName: string;
-//   middleName: string;
-//   jobTitle: string;
-//   department: string;
-//   lastName: string;
-//   photoLink: string;
-//   email: string;
-//   mobileNumber: string;
-//   address: string;
-//   hoursPerWeek: string;
-//   startDate: string;
-//   contractType: ContractType;
-//   workType: WorkType;
 
 type Inputs = {
   firstName: string;
   middleName: string;
   lastName: string;
   emailAddress: string;
-  mobNumber: string; // Changed to string to match Employee interface
+  mobNumber: number;
   resAddress: string;
   empStatus: string;
-  startDate: Date; // Changed to string to match Employee interface
-  endDate: Date  ;
+  startDate: Date;
+  endDate: Date | null;
   workBasis: string;
-  hrsPerWeek: string; // Changed to string to match Employee interface
+  hrsPerWeek: number;
   onGoing: boolean;
 };
 
@@ -59,56 +40,39 @@ const EmployeeForm = ({ formParams }: Params) => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  
-  const onSubmit: SubmitHandler<Inputs> = async (employeeDetails: Inputs) => {
-    try {
-      const employee: Employee = {
-        id: formParams.employeeId ? Number(formParams.employeeId) : 0,
-        firstName: employeeDetails.firstName,
-        middleName: employeeDetails.middleName,
-        lastName: employeeDetails.lastName,
-        emailAddress: employeeDetails.emailAddress,
-        mobNumber: employeeDetails.mobNumber,
-        resAddress: employeeDetails.resAddress,
-        
-        empStatus: employeeDetails.empStatus,
-        startDate: employeeDetails.startDate,
-        endDate: employeeDetails.endDate,
-        onGoing: employeeDetails.onGoing,
-        workBasis: employeeDetails.workBasis,
-        hrsPerWeek: employeeDetails.hrsPerWeek,
-        
-      };
-
-      if (formParams.crudMethod === "POST") {
-        await createUpdateEmployee(employee,1);
-        alert(`${employee.firstName} ${employee.lastName}'s details have been added to the employee register.`);
-      } else if (formParams.crudMethod === "PUT" && formParams.employeeId) {
-        await createUpdateEmployee(employee, formParams.employeeId);
-        alert(`${employee.firstName} ${employee.lastName}'s details have been updated in the employee register.`);
-      }
-    } catch (error) {
-      console.error("Error creating/updating employee:", error);
-    }
+  const onSubmit: SubmitHandler<Inputs> = (employeeDetails: Inputs) => {
+    createUpdateEmployee(
+      formParams.fetchUrl,
+      formParams.crudMethod,
+      employeeDetails
+    );
+    alert(
+      `${employeeDetails.firstName} ${
+        employeeDetails.lastName
+      }'s details have been ${
+        formParams.crudMethod == "POST" ? "added to" : "updated in"
+      } the employee register.`
+    );
+    navigate("/employees");
   };
 
-  useEffect(() => {
-    if (formParams.crudMethod === "PUT") {
+  if (formParams.crudMethod == "PUT") {
+    useEffect(() => {
       getEmployees(formParams.fetchUrl)
         .then((data) => setData(data))
         .catch((error) => setError(error))
         .finally(() => setIsLoading(false));
-    }
-  }, [formParams]);
+    }, []);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>There was an error loading the data</p>;
+    if (isLoading) return <p>"Loading..."</p>;
+    if (error) return <p>"There was an error loading the data"</p>;
+  }
 
   const isOnGoing = watch("onGoing");
   const empWorkBasis = watch("workBasis");
 
   if (isOnGoing) {
-    setValue("endDate",new Date());
+    setValue("endDate", null);
   }
 
   const handleCancel = () => {
@@ -220,7 +184,7 @@ const EmployeeForm = ({ formParams }: Params) => {
       <div className={styles.Form_Break}>
         <p className={styles.Form_Label}>What is contract type?</p>
         <input
-          id="nsw-checkbox"
+          id="checkbox"
           defaultChecked={data.empStatus == "Permanent"}
           type="radio"
           {...register("empStatus", { required: true })}
@@ -229,7 +193,7 @@ const EmployeeForm = ({ formParams }: Params) => {
         <label htmlFor="permanent">Permanent</label>
         <div className={styles.Break}>
           <input
-            id="nsw-checkbox"
+            id="checkbox"
             defaultChecked={data.empStatus == "Contract"}
             type="radio"
             {...register("empStatus")}
@@ -283,7 +247,7 @@ const EmployeeForm = ({ formParams }: Params) => {
       <div className={styles.Form_Break}>
         <input
           defaultChecked={data.onGoing}
-          id="nsw-checkbox"
+          id="checkbox"
           type="checkbox"
           {...register("onGoing")}
         />
@@ -296,7 +260,7 @@ const EmployeeForm = ({ formParams }: Params) => {
         </p>
         <input
           defaultChecked={data.workBasis == "Full-time"}
-          id="nsw-checkbox"
+          id="checkbox"
           type="radio"
           {...register("workBasis", { required: true })}
           value="Full-time"
@@ -304,7 +268,7 @@ const EmployeeForm = ({ formParams }: Params) => {
         <label htmlFor="fullTime">Full-time</label>
         <div className={styles.Break}>
           <input
-            id="nsw-checkbox"
+            id="checkbox"
             defaultChecked={data.workBasis == "Part-time"}
             type="radio"
             {...register("workBasis")}

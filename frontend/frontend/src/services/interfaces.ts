@@ -1,9 +1,8 @@
 
-
 export interface Employee {
    id: number;
   firstName: string;
-  middleName?: string;
+  middleName: string;
   lastName: string;
   emailAddress: string;
   mobNumber: string;
@@ -13,7 +12,5 @@ export interface Employee {
   endDate: Date  ;
   onGoing: boolean;
   workBasis: string;
-  hrsPerWeek: string;
+  hrsPerWeek: number;
 }
-
-

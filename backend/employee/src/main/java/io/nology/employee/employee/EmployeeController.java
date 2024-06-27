@@ -63,6 +63,7 @@ public class EmployeeController {
     return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
   }
 
+  @SuppressWarnings("null")
   @DeleteMapping("/{id}")
   public ResponseEntity<Employee> deleteEmployee(@PathVariable Long id) throws NotFoundException {
     boolean deleted = this.service.deleteEmployeeById(id);
